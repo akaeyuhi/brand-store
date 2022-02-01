@@ -1,7 +1,4 @@
-import {configureStore} from '@reduxjs/toolkit';
+import {createStore} from 'redux'
+import {rootReducer} from "./reducers";
 
-export const index = configureStore({
-    reducer: {
-        counter: '',
-    },
-});
+export const store = createStore(rootReducer, {});
