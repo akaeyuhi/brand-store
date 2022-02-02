@@ -1,20 +1,20 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-
+import { Route, Routes  } from 'react-router-dom';
+/* eslint-disable react/jsx-no-undef */
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
     return (
-      <Switch>
+      <Routes>
         <Route path="/cart" exact>
           <CartPage />
         </Route>
-      </Switch>
+      </Routes>
     );
   }
 
   return (
-    <Switch>
+    <Routes>
       <Route path="/" exact>
         <HomePage />
       </Route>
@@ -31,9 +31,9 @@ export const useRoutes = isAuthenticated => {
         <LoginPage />
       </Route>
       <Route path="/register" exact>
-        <RegicterPage />
+        <RegisterPage />
       </Route>
       <Redirect to="/" />
-    </Switch>
+    </Routes>
   );
 };
