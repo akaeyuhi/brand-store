@@ -1,4 +1,4 @@
-## Brand store
+## Brand index
 ### ReactRedux frontend, nothing more
 
 ### Build and start the project
