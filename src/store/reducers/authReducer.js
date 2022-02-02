@@ -11,19 +11,19 @@ export const authReducer = (state = initialState, action) => {
       localStorage.setItem('token', action.payload.token);
       localStorage.setItem('user', JSON.stringify(action.payload.user));
       return {
+        ...state,
         ...action.payload
       };
     },
     [LOGIN_ERROR | LOGOUT]: () => {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      return {};
+      return initialState;
     }
   };
   try {
-    state = actions[action.type]();
+    return actions[action.type]();
   } catch (e) {
     console.log(e);
   }
-  return state;
 };
