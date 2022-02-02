@@ -3,12 +3,23 @@ import HeaderCartItem from './HeaderCartItem';
 import { Link } from 'react-router-dom';
 
 export default function HeaderCart() {
-  const [cartItems, setCardItems] = useState([]);
-  const [sumPrice, setSumPrice] = useState('0$');
+  const [cartItems] = useState([
+    {
+      id: 1,
+      name: 'Test',
+      img: 'Test',
+      rating: 'Test'
+    },
+    {
+      id: 1,
+      name: 'Test',
+      img: 'Test',
+      rating: 'Test'
+    },
+  ]);
+  const [sumPrice] = useState('0$');
 
   //TODO: store integration/fetching
-  setCardItems([]);
-  setSumPrice('');
 
   return (
     <div className="cart__drop">
