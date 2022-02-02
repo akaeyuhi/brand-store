@@ -1,11 +1,19 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { useRoutes } from './router';
+import Header from './components/Header';
 
 function App() {
-  return (
-    <div className="App">
+  const isAuthenticated = false;
+  const routes = useRoutes(isAuthenticated);
 
-    </div>
+  return (
+    <Router>
+      <div className="app">
+        <Header />
+        {routes}
+      </div>
+    </Router>
   );
 }
 
