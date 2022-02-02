@@ -9,17 +9,18 @@ export default function Header() {
     <header className="header">
       <div className="container header__content">
         <div className="header__left">
-          <Link className="logo" to="index.html" tag="a">
+          <Link className="logo" to="/" tag="a">
             <img alt="logo" className='logo__img' src="../assets/img/logo.png" />
             <p>BRAN<span>D</span></p>
           </Link>
           <Search />
         </div>
         <div className="header__right">
-          <Link to="shopping_cart.html" tag="a">
+          <Link to="/cart" tag="a">
             <img alt="cart" className='cart' src="../assets/img/cart.svg" />
           </Link>
           <HeaderCart />
+          <Link className="my_acc" to="/cart">My account <i className="fas fa-caret-down" /></Link>
         </div>
       </div>
     </header>
