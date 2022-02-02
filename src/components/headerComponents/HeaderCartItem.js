@@ -30,3 +30,5 @@ HeaderCartItem.propTypes = {
     rating: PropTypes.string
   })
 };
+
+export default HeaderCartItem;
