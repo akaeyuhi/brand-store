@@ -10,14 +10,17 @@ const initialState = {
 
 export const cartReducer = (state = initialState, action) => {
   const actions = {
-    [CART_ADD]: () => state.items.concat([action.payload]),
-    [CART_DELETE]: () => state.items.filter(item => item.id = action.payload.id),
+    [CART_ADD]: () => ({
+      items: state.items.concat([action.payload])
+    }),
+    [CART_DELETE]: () => ({
+      items: state.items.filter(item => item.id = action.payload.id),
+    }),
     [CART_UPDATE]: () => '', // TODO
-    [CART_CLEAR]: () => []
+    [CART_CLEAR]: () => initialState
   };
   try {
-    state = actions[action.type]();
-    return state;
+    return actions[action.type]();
   } catch (e) {
     console.log(e);
   }

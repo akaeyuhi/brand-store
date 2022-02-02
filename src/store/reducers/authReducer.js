@@ -17,13 +17,12 @@ export const authReducer = (state = initialState, action) => {
     [LOGIN_ERROR | LOGOUT]: () => {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      return {};
+      return initialState;
     }
   };
   try {
-    state = actions[action.type]();
+    return actions[action.type]();
   } catch (e) {
     console.log(e);
   }
-  return state;
 };
