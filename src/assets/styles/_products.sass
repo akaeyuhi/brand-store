@@ -1,0 +1,281 @@
+@import "mixins"
+@import "vars"
+
+.items
+  @extend .container
+  display: flex
+  margin-top: $default-margin !important
+  align-items: flex-start
+  justify-content: space-between
+
+  &__checkboxes
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+
+  &__now
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    justify-items: start
+    width: 50%
+  &__link
+    border-right: 1px solid #dfdfdf
+    color: #6f6e6e
+    font-size: 14px
+    padding-right: 5px
+    margin-right: 5px
+    text-align: center
+
+  &__categories
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    flex-wrap: wrap
+    width: 250px
+
+  &__category
+    display: flex
+    align-items: center
+    justify-content: space-between
+    flex-wrap: wrap
+    cursor: pointer
+
+
+  &__summary
+    text-transform: uppercase
+    width: 248px
+    display: flex
+    justify-content: space-between
+    font-weight: bold
+    font-size: $default-font-size
+    color: #6f6e6e
+    border-left: 5px solid $color-darker-pink
+    border-bottom: solid 1px #ebebeb
+    padding: 14px
+    margin-top: 14px
+
+  &__summary::after
+    display: block
+    font-family: "Font Awesome 5 Free", sans-serif
+    font-weight: 900
+    content: "\f0d7"
+    color: #6f6e6e
+    transition: all 0.5s
+
+  &__category[open] &__summary, &__category[open] &__summary:after, &__summary:hover, &__links:hover
+    color: $color-darker-pink
+
+  &__category[open] &__summary:after
+    transform: rotate(180deg)
+
+  &__category[open] &__summary ~ *
+    animation: sweep 0.5s ease-in-out
+    @keyframes sweep
+      0%
+        opacity: 0
+        transform: translateY(-10px)
+      100%
+        opacity: 1
+        transform: translateY(0)
+
+
+
+  &__links
+    text-decoration: none
+    font-size: $default-font-size
+    line-height: 33px
+    color: #6f6e6e
+    padding-left: 12px
+
+  &__right
+    margin-left: 50px
+    display: flex
+    flex-direction: column
+    max-width: 850px
+
+  &__products
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between
+
+  &__settings
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+  &__trending, &__size, &__price, &__sort
+    width: 261px
+    border: none
+    margin-bottom: 45px
+
+  &__input
+    border: solid 1px #ebebeb
+    background-color: #ffffff
+    cursor: pointer
+
+  &__label
+    margin-right: 23px
+
+  &__legend
+    text-transform: uppercase
+    font-weight: bold
+    margin-bottom: 25px
+
+  &__legend, &__label
+    font-size: $default-font-size
+    line-height: 20px
+    color: #6f6e6e
+
+  &__range
+    width: 261px
+    color: $color-darker-pink
+    cursor: pointer
+    padding-bottom: 12px
+
+  &__prices
+    display: flex
+    justify-content: space-between
+    font-size: 14px
+    color: #6f6e6e
+
+  &__sort
+    background-color: #f3f3f3
+    width: 100%
+    padding: 10px
+    display: flex
+
+    &_by, &_count
+      display: flex
+      margin-left: 10px
+
+    &_label, &_option, &_select
+      color: #6f6e6e
+      font-size: $default_font-size
+      border: solid 1px #ebebeb
+      background-color: #fff
+      padding: 5px
+      cursor: pointer
+      transition: all 0.25s
+      &:hover, &:focus
+        border-color: $color-pink
+
+
+.pagination
+  display: flex
+  justify-content: space-between
+
+  &__buttons
+    border: solid 1px #ebebeb
+    background-color: #fff
+
+  &_slide
+    border: none
+    background: none
+    color: #aaa
+    margin: 15px
+
+    &:hover
+      color: $color-pink
+  &_a
+    text-decoration: none
+    color: #c4c4c4
+    margin-right: 16px
+
+  &_a:hover
+    color: $color-pink
+
+
+  &__all
+    border-radius: 3px
+    border: solid 1px $color-darker-pink
+    background-color: #fff
+    color: $color-darker-pink
+    width: 150px
+    height: 45px
+    font-size: 16px
+  &__all:hover
+    color: $color-white
+    background-color: $color-darker-pink
+.last
+  margin-right: 0 !important
+
+input[type=range].items__range
+  width: 100%
+  margin: 4px 0
+  background-color: transparent
+  -webkit-appearance: none
+
+  &:focus
+    outline: none
+
+  &::-webkit-slider-runnable-track
+    background: #f16d7f
+    border: 0
+    border-radius: 25px
+    width: 100%
+    height: 6px
+    cursor: pointer
+
+  &::-webkit-slider-thumb
+    margin-top: -4px
+    width: 14px
+    height: 14px
+    background: #f16d7f
+    border: 0px solid rgba(0, 0, 0, 0)
+    border: 0
+    border-radius: 50px
+    cursor: pointer
+    -webkit-appearance: none
+
+  &:focus::-webkit-slider-runnable-track
+    background: #f16d7f
+
+  &::-moz-range-track
+    background: #f16d7f
+    border: 0
+    border-radius: 25px
+    width: 100%
+    height: 6px
+    cursor: pointer
+
+  &::-moz-range-thumb
+    width: 14px
+    height: 14px
+    background: #f16d7f
+    border: 0px solid rgba(0, 0, 0, 0)
+    border: 0
+    border-radius: 50px
+    cursor: pointer
+
+  &::-ms-track
+    background: transparent
+    border-color: transparent
+    border-width: 4px 0
+    color: transparent
+    width: 100%
+    height: 6px
+    cursor: pointer
+
+  &::-ms-fill-lower, &::-ms-fill-upper
+    background: #f16d7f
+    border: 0
+    border-radius: 50px
+
+  &::-ms-thumb
+    width: 14px
+    height: 14px
+    background: #f16d7f
+    border: 0px solid rgba(0, 0, 0, 0)
+    border: 0
+    border-radius: 50px
+    cursor: pointer
+    margin-top: 0px
+  &:focus
+    &::-ms-fill-lower, &::-ms-fill-upper
+      background: #f16d7f
+
+@supports (-ms-ime-align: auto)
+
+  input[type=range].items__range
+    margin: 0

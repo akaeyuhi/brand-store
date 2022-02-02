@@ -1,0 +1,180 @@
+@import "mixins"
+@import "vars"
+
+.cart-checkout
+
+  margin-top: $default_margin !important
+  &__header, &__item
+    display: grid
+    grid-template-columns: 5fr repeat(5, 1fr)
+    grid-gap: 60px
+    align-items: center
+    font-size: 13px
+    font-weight: bold
+    line-height: 1.54
+    color: #222
+    text-align: center
+    text-transform: uppercase
+    border-bottom: solid 1px #eaeaea
+    padding: 25px 0 25px 0
+
+
+  &__item
+    grid-auto-rows: minmax(115px, auto)
+
+    div > span
+      color: #656565
+
+  &__desc
+    display: flex
+    text-align: left
+
+  &__input
+    text-align: center
+    width: 54px
+    height: 30px
+    border: solid 1px #eaeaea
+    -webkit-transition: all 0.25s
+    -moz-transition: all 0.25s
+    -o-transition: all 0.25s
+    transition: all 0.25s
+    &:focus
+      border-color: $color-darker-pink
+      +scale(1.05)
+
+
+
+  &__desc img
+    width: 100px
+    height: 115px
+
+
+  &__text
+    padding: 15px
+    font-size: 13px
+    color: #575757
+
+    & a
+      color: #222
+
+    & h3
+      margin-bottom: 20px
+
+    & p
+      text-transform: none
+
+    &_gray
+      color: #6f6e6e
+
+  &__continue
+    margin-top: 45px
+    display: flex
+    justify-content: space-between
+
+  &__button
+    width: 235px
+    height: 50px
+    border: solid 1px #eaeaea
+    background: none
+    text-align: center
+    color: #4a4a4a
+    font-size: $default-font-size
+    text-transform: uppercase
+    font-weight: bold
+    -webkit-transition: color 0.25s, background 0.25s
+    -moz-transition: color 0.25s, background 0.25s
+    -o-transition: color 0.25s, background 0.25s
+    transition: color 0.25s, background 0.25s
+
+    &:hover
+      color: $color-white
+      border: none
+      background-color: $color-darker-pink
+
+.proceed
+  margin-top: 60px !important
+  display: grid
+  grid-gap: 36px
+  grid-template-columns: repeat(3, 1fr)
+
+  &__fieldset, &__total
+    border: none
+
+  &__fieldset
+    text-align: left
+    text-transform: uppercase
+
+    p
+      font-size: $default-font-size
+      margin-top: 20px
+      text-transform: none
+
+  &__input
+    margin-top: 20px
+    width: 355px
+    height: 45px
+    border: solid 1px #eaeaea
+    background-color: #fff
+    font-size: 13px
+    color: #b1b1b1
+    text-indent: 18px
+    -webkit-transition: all 0.25s
+    -moz-transition: all 0.25s
+    -o-transition: all 0.25s
+    transition: all 0.25s
+
+    &:focus
+      +scale(1.02)
+      border-color: $color-pink
+
+  &__button
+    @extend .cart-checkout__button
+    margin-top: 25px
+    width: 100px
+    height: 35px
+    font-size: 11px
+    -webkit-transition: color 0.25s, background 0.25s
+    -moz-transition: color 0.25s, background 0.25s
+    -o-transition: color 0.25s, background 0.25s
+    transition: color 0.25s, background 0.25s
+    &:hover
+      color: $color-white
+      border: none
+      background-color: $color-darker-pink
+  &__total
+    background-color: #f5f3f3
+    padding: 40px
+    align-self: start
+
+  &__text
+    font-size: 11px
+    color: #4a4a4a
+    text-transform: uppercase
+    text-align: right
+    border-bottom: solid 1px #eaeaea
+    padding: 20px 0 20px 0
+    &_big
+      margin-top: 15px
+      font-size: 16px
+      font-weight: bold
+      color: #222
+    &_pink
+      color: $color-darker-pink
+
+  &__done
+    margin-top: 20px
+    width: 273px
+    height: 50px
+    background-color: $color-darker-pink
+    font-size: 16px
+    color: $color-white
+    font-weight: bold
+    border: none
+    text-transform: uppercase
+    -webkit-transition: all 0.25s
+    -moz-transition: all 0.25s
+    -o-transition: all 0.25s
+    transition: all 0.25s
+    &:hover
+      +scale(1.05)
+

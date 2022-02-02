@@ -1,0 +1,259 @@
+@import "mixins"
+@import "vars"
+
+
+.products
+  &__header
+    height: 35px
+    text-align: center
+    font-size: $default-font-size
+    letter-spacing: 0.35px
+    color: #9f9f9f
+
+  &__link
+      color: $color-black
+
+
+  &__header h3
+    font-size: 30px
+    font-weight: bold
+    letter-spacing: 0.75px
+    color: #222222
+
+
+  &__content
+    padding-top: 63px
+    +flex
+    justify-content: space-between
+
+
+  &__item
+    position: relative
+    width: 261px
+    height: 364px
+    margin-bottom: 39px
+    -webkit-transition: all 0.25s
+    -moz-transition: all 0.25s
+    -o-transition: all 0.25s
+    transition: all 0.25s
+    &:hover
+      +scale(1.02)
+
+
+
+  &__text
+    font-size: $default-font-size
+    color: #222222
+    text-transform: uppercase
+    font-weight: bold
+    padding: 20px 14px
+
+    p
+      margin-top: 16px
+      +flex
+      justify-content: space-between
+      color: $color-pink
+
+  &__img
+    width: 100%
+    display: block
+    height: 280px
+
+
+  &__star
+    display: none
+
+
+  &__item:hover
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.16)
+
+
+  &__item:hover &__add
+    display: block
+
+
+  &__item:hover &__star
+    display: block
+
+
+  &__item:hover &__img
+    filter: brightness(50%)
+
+
+  &__add
+    -webkit-transition: all 0.25s
+    -moz-transition: all 0.25s
+    -o-transition: all 0.25s
+    transition: all 0.25s
+
+  &__add:hover
+    box-shadow: 0 0 10px #fff
+
+
+  &__button
+    margin: 79px auto auto auto
+    text-decoration: none
+    display: block
+    width: 212px
+    height: 48px
+    background-color: $color-pink
+    color: $color-white
+    font-size: $default-font-size + 2px
+    font-weight: bold
+    line-height: 54px
+    letter-spacing: 0.4px
+    text-align: center
+    -webkit-transition: all 0.25s
+    -moz-transition: all 0.25s
+    -o-transition: all 0.25s
+    transition: all 0.25s
+    &:hover
+      +scale(1.05)
+
+
+  &__add
+    position: absolute
+    top: 98px
+    left: 70px
+    display: none
+    text-decoration: none
+    font-size: 13px
+    text-align: center
+    line-height: 39px
+    color: $color-white
+    width: 123px
+    height: 39px
+    border: solid 1px $color-white
+
+
+.promo
+  height: 614px
+  background-color: #e8e8e8
+
+  &__text
+    line-height: 40px
+    font-size: 40px
+    padding-left: 12px
+    font-weight: 900
+    margin-top: 224px
+    float: left
+    color: #222222
+    border-left: 12px solid $color-pink
+
+
+  &__text_big
+    font-size: 60px
+    letter-spacing: 1.5px
+
+  &__content
+    height: 100%
+    background: url('img/promo.jpg') 0 -51px
+
+
+.offer
+  padding-top: 100px
+  padding-bottom: 100px
+  +flex
+  justify-content: space-between
+
+
+  &__content div:first-child
+    margin-bottom: 20px
+
+
+  &__content_big
+    width: 560px
+    height: 542px
+    background-color: #ccc
+
+
+  &__content_mini
+    width: 560px
+    height: 241px
+    background-color: #eee
+
+
+  &__text
+    font-weight: 900
+    font-size: $default-font-size + 4px
+    background-color: #fff
+    padding: 16px 20px
+    float: left
+    margin-top: 26px
+    text-transform: uppercase
+
+    span
+      font-size: 30px
+      color: $color-pink
+
+
+.features
+  &__offer
+    background-color: $color-black
+    min-height: 529px
+    margin-top: $default-margin !important
+    position: relative
+    +flex
+
+
+  &__text
+    position: absolute
+    top: 146px
+    left: 39px
+
+
+  &__small
+    font-weight: bold
+    letter-spacing: 0.8px
+    text-align: left
+    color: $color-white
+    font-size: 32px
+
+
+  .big
+    font-size: 53.5px
+
+
+  &__small
+    span
+      color: $color-pink
+
+
+  &__img
+    filter: brightness(75%)
+
+
+  &__points
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+  &__point
+    display: flex
+    margin-left: 37px
+    justify-content: space-between
+
+  &__point:not(:first-child)
+    padding-top: 61px
+
+
+  &__logo
+    width: auto
+    height: 35px
+    padding-bottom: 50px
+
+
+  &__desc
+    margin-left: 33px
+    font-size: $default-font-size - 2px
+    font-weight: 300
+    letter-spacing: 0.35px
+    color: #fbfbfb
+    width: 219px
+
+
+
+  &__header
+    font-size: 20px
+    font-weight: bold
+    color: #fbfbfb
+    margin-bottom: 21px
