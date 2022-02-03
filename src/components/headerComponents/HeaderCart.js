@@ -11,7 +11,7 @@ export default function HeaderCart() {
       rating: 'Test'
     },
     {
-      id: 1,
+      id: 2,
       name: 'Test',
       img: 'Test',
       rating: 'Test'
