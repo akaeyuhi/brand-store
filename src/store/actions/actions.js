@@ -42,6 +42,13 @@ export function cartClear(payload) {
   };
 }
 
+export function emailSubscribe(payload) {
+  return async dispatch => {
+    dispatch(payload);
+    //TODO fetch subscribe
+  };
+}
+
 export function logout() {
   return {
     type: LOGOUT
