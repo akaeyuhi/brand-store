@@ -22,7 +22,8 @@ export const authReducer = (state = initialState, action) => {
     }
   };
   try {
-    return actions[action.type]();
+    if (actions[action.type]) return actions[action.type]();
+    else return initialState;
   } catch (e) {
     console.log(e);
   }

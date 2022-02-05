@@ -1,0 +1,126 @@
+@import "vars"
+@import "mixins"
+
+.checkout
+
+  margin-top: $default-margin !important
+  padding-bottom: 80px
+
+  &__flex
+    display: flex
+    justify-content: space-between
+
+  &__register, &__step
+    padding: 35px
+
+  &__step
+    border-bottom: 1px solid #e8e8e8
+
+  &__h3
+    font-size: 16px
+    font-weight: bold
+    color: $color-black
+    width: 100%
+    text-transform: uppercase
+
+
+  &__fieldset
+    border: none
+    &>div
+      margin-bottom: 32px
+
+    &_separator
+      margin-bottom: 27px !important
+
+  &__radio
+    cursor: pointer
+    position: absolute
+    z-index: -1
+    opacity: 0
+
+  &__label>.radio
+    display: inline-flex
+    align-items: center
+    user-select: none
+
+  &__label>.radio::before
+    content: ''
+    width: 10px
+    height: 10px
+    border: 2px solid $color-black
+    border-radius: 50%
+    display: inline-block
+    flex-shrink: 0
+    flex-grow: 0
+    margin-right: 15px
+    padding: 2px
+
+  &__label>input:not(:disabled):not(:checked)+.radio:hover::before &__label>input:focus:not(:checked)+.radio::before
+    border-color: $color-darker-pink
+
+  &__label>input:not(:disabled):active+.radio::before
+    background-color: $color-black
+    border-color: $color-black
+
+  &__label>input:focus+.radio::before, &__label>input:hover+.radio::before
+    box-shadow: 0 0 0 0.1rem $color-pink
+
+  &__label>input:checked+.radio::before
+    border-color: $color-black
+    background: content-box $color-black
+
+  &__label>input:disabled+.radio::before
+    background-color: $color-gray
+
+
+
+  &__text, &__label
+    font-size: 14px
+    font-weight: bold
+    color: $color-black
+    text-transform: uppercase
+    &_gray
+      color: $color-gray
+      text-transform: none
+      font-weight: normal
+      margin-top: 15px
+    &_required
+      color: #ff0d0d
+      font-weight: bold
+      text-transform: none
+
+  &__label
+    display: block
+    margin-bottom: 16px
+    font-size: 12px
+
+  &__button
+    background: none
+    border: solid 1px #eaeaea
+    padding: 19px 53px
+    transition: background 0.25s, color 0.25s
+    cursor: pointer
+    &:hover
+      background-color: $color-darker-pink
+      color: $color-white
+  &__login
+    padding: 35px
+  &__input
+    border: solid 1px #eaeaea
+    padding: 0 15px
+    min-width: 100%
+    height: 45px
+    transition: all 0.25s
+    margin-bottom: 20px
+    &:focus, &:hover
+      +scale(1.05)
+      border-color: $color-pink
+
+
+  &__link
+    @extend .checkout__text
+    text-transform: none
+    margin-left: 32px
+
+
+

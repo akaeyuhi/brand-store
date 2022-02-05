@@ -1,0 +1,284 @@
+@import "vars"
+@import "mixins"
+
+.header
+  min-height: 100px
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.17)
+  border: solid 1px #ececec
+  background-color: $color-white
+
+
+  &__content
+    min-height: 100px
+    height: 100%
+    +flex
+    justify-content: space-between
+
+
+  &__left, &__right
+    +flex
+    position: relative
+
+  &__right:hover
+    .cart__drop
+      display: flex
+
+
+.logo
+  +flex
+  text-decoration: none
+
+  p
+    font-size: 27px
+    font-weight: 300
+    letter-spacing: 0.68px
+    text-align: center
+    color: #222222
+
+    span
+      font-weight: 900
+      color: $color-pink
+
+.form
+  +flex
+  margin-left: 37px
+
+
+  &_browse
+    display: block
+    text-decoration: none
+    text-align: center
+    width: 87px
+    height: 39px
+    border: solid 1px #e6e6e6
+    background-image: linear-gradient(to top, #f9f9f9, #f5f5f5)
+    line-height: 39px
+    font-size: $default-font-size
+    font-weight: 300
+    color: #222222
+    position: relative
+
+
+  &__input
+    width: 317px
+    height: 37px
+    border: solid 1px #e6e6e6
+    background-color: $color-white
+    font-size: $default-font-size
+    font-weight: 300
+    line-height: 2.29
+    letter-spacing: 0.35px
+    text-indent: 15px
+
+
+
+  &__search
+    width: 36px
+    height: 39px
+    border: solid 1px #e6e6e6
+    background-color: $color-white
+
+  &:hover
+    .drop__browse
+      display: flex
+
+
+.logo__img
+  margin-right: 13px
+
+
+.cart
+  margin-right: 26px
+
+  &__link
+    color: $color-black
+
+  &__text
+    color: $color_pink
+
+  &__star
+    margin: 12px 0 12px 0
+
+  &__delete
+    border: none
+    font-size: $default-font-size + 2px
+    color: $color-gray
+    background: none
+
+
+  &__drop
+    width: 262px
+    border-radius: 5px
+    background-color: $color-white
+    border: 1px solid #ececec
+    padding: 20px
+    margin-right: 46px
+    display: none
+    position: absolute
+    top: 40px
+    flex-direction: column
+    text-transform: uppercase
+    z-index: 2
+    -webkit-transition: opacity 0.5s linear
+    -moz-transition: opacity 0.5s linear
+    -o-transition: opacity 0.5s linear
+    transition: opacity 0.5s linear
+
+    &:before
+      +triangle(12px)
+
+    &_items
+      display: flex
+      justify-content: space-between
+      flex-direction: column
+
+    &_item
+      display: flex
+      align-items: center
+      justify-content: space-between
+      padding: 16px 0 16px 0
+      border-bottom: 1px solid #e8e8e8
+      font-weight: bold
+      font-size: $default-font-size - 2
+
+    &__description
+      display: flex
+      align-items: center
+      flex-wrap: nowrap
+      &_text
+        margin-left: 15px
+
+    &_total
+      font-size: $default-font-size + 2
+      font-weight: bold
+      color: $color-black
+      margin-top: 19px
+      padding-bottom: 18px
+
+      &__checkout
+        text-decoration: none
+        color: $color-pink
+        line-height: 50px
+        text-align: center
+        display: block
+        margin-top: 12px
+        border: solid 1px $color-pink
+        background: none
+        width: 100%
+        height: 50px
+        -webkit-transition: background 0.25s, color 0.25s
+        -moz-transition: background 0.25s, color 0.25s
+        -o-transition: background 0.25s, color 0.25s
+        &:hover
+          background-color: $color-pink
+          color: $color-white
+
+      &__goto
+        @extend .cart__drop_total__checkout
+        color: #4a4a4a
+        border: solid 1px #4a4a4a
+        &:hover
+          background-color: #4a4a4a
+
+.my_acc
+  +font($color-white, $default-font-size)
+  background-color: $color-pink
+  display: block
+  width: 130px
+  height: 38px
+  line-height: 38px
+  text-align: center
+
+.drop
+  z-index: 2
+  border-radius: 5px
+  background-color: $color-white
+  border: 1px solid #ececec
+  padding: 20px
+  margin-right: 46px
+  display: none
+  position: absolute
+  top: 48px
+
+  &__menu
+    list-style: none
+
+  &__h3
+    font-size: $default-font-size
+    line-height: 28px
+    letter-spacing: 0.35px
+    color: #646464
+    border-bottom: 1px solid #e8e8e8
+    padding: 8px 0 8px 0
+    text-transform: uppercase
+
+  &__link
+    font-size: $default-font-size
+    line-height: 28px
+    letter-spacing: 0.35px
+    color: #4f4f4f
+    text-decoration: none
+    padding-right: 32px
+
+  &__link:hover
+    color: $color-pink
+
+  &__flex
+    width: 235px
+
+  &__flex:last-of-type
+    margin-right: 0
+
+  &_right:before
+    left: auto !important
+    right: 10px
+
+  &_right
+    right: 0
+
+  &:before
+    +triangle(31px)
+
+  &__browse
+    z-index: 2
+    border-radius: 5px
+    background-color: $color-white
+    border: 1px solid #ececec
+    padding: 19px
+    margin-right: 46px
+    display: none
+    flex-direction: column
+    position: absolute
+    top: 45px
+    &:before
+      +triangle(62px)
+
+
+
+.menu
+  list-style: none
+  +flex
+  justify-content: center
+
+
+  &__list
+    position: relative
+    &:hover
+      .drop
+        display: flex
+
+
+  &__link
+    padding: 20px
+    display: block
+    font-size: $default-font-size
+    font-weight: bold
+    line-height: 26px
+    text-align: left
+    color: #222222
+    text-transform: uppercase
+    text-decoration: none
+
+
+  &__link:hover
+    color: $color-pink
