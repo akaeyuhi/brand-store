@@ -11,7 +11,7 @@ export default function BrowseDrop() {
     'Denim',
     'Leggings/Pants',
     'Skirts/Shorts',
-    'Accessories'
+    'Accessories',
   ]);
   const [womenLinks] = useState([
     'Tees/Tank tops',
@@ -19,26 +19,28 @@ export default function BrowseDrop() {
     'Sweaters',
     'Sweatshirts/Hoodies',
     'Blazers',
-    'Jackets/vests'
+    'Jackets/vests',
   ]);
 
   //TODO: Fetching links/filling routes path
 
   return (
-    <div className="drop__browse">
-      <div className="drop__browse__flex">
-        <h3 className="drop__h3">Women</h3>
-        <ul className="drop__menu">
+    <div className='drop__browse'>
+      <div className='drop__browse__flex'>
+        <h3 className='drop__h3'>Women</h3>
+        <ul className='drop__menu'>
           {womenLinks.map((link, idx) => <li key={idx}>
-            <Link className="drop__link link" to="/products" tag="a" >{link}</Link>
+            <Link className='drop__link link' to='/products'
+              tag='a'>{link}</Link>
           </li>)}
         </ul>
       </div>
-      <div className="drop__flex">
-        <h3 className="drop__h3">Men</h3>
-        <ul className="drop__menu">
+      <div className='drop__flex'>
+        <h3 className='drop__h3'>Men</h3>
+        <ul className='drop__menu'>
           {menLinks.map((link, idx) => <li key={idx}>
-            <Link className="drop__link link" to="/products" tag="a" >{link}</Link>
+            <Link className='drop__link link' to='/products'
+              tag='a'>{link}</Link>
           </li>)}
         </ul>
       </div>

@@ -5,16 +5,16 @@ import NavbarDrop from './NavbarDrop';
 
 function MenuList({ name, idx }) {
   const [placeholder] = useState(new Array(3).fill(''));
-  const dropClass  = useRef('drop');
+  const dropClass = useRef('drop');
 
   if (idx > 2) {
     dropClass.current += ' drop_right';
   }
 
   return (
-    <li className="menu__list">
-      <Link className="menu__link link" to="/products">{name}</Link>
-      <div  className={dropClass.current}>
+    <li className='menu__list'>
+      <Link className='menu__link link' to='/products'>{name}</Link>
+      <div className={dropClass.current}>
         {placeholder.map((_, key) => <NavbarDrop key={key} />)}
       </div>
     </li>
@@ -23,7 +23,7 @@ function MenuList({ name, idx }) {
 
 MenuList.propTypes = {
   name: PropTypes.string,
-  idx: PropTypes.number
+  idx: PropTypes.number,
 };
 
 export default MenuList;

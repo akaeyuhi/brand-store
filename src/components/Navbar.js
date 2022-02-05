@@ -9,15 +9,16 @@ export default function Navbar() {
     'Kids',
     'Accessories',
     'Featured',
-    'Hot Deals'
+    'Hot Deals',
   ]);
 
   return (
     <nav>
-      <ul className="menu">
-        <li className="menu__list"><Link className="menu__link link"
-          to="/">Home</Link></li>
-        {linkNames.map((linkName, idx) => <MenuList key={idx} name={linkName} idx={idx} />)}
+      <ul className='menu'>
+        <li className='menu__list'><Link className='menu__link link'
+          to='/'>Home</Link></li>
+        {linkNames.map((linkName, idx) => <MenuList key={idx} name={linkName}
+          idx={idx} />)}
       </ul>
     </nav>
   );
