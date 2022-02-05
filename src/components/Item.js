@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function Item({ item, clickHandler }) {
 
-  const addHandler = event => {
+  const addHandler = useCallback(event => {
     event.preventDefault();
     clickHandler(item);
-  };
+  }, [item]);
 
   return (
     <div className='products__item'>
