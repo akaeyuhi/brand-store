@@ -1,15 +1,16 @@
 import React, { useCallback, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { emailSubscribe } from '../store/actions/actions';
+import { useHttp } from '../hooks/http.hook';
 
 export default function Subscribe() {
   const email = useRef('');
 
-  const dispatch = useDispatch();
+  const { authFetch } = useHttp('');
 
   const submitHandler = useCallback(event => {
     event.preventDefault();
-    dispatch(emailSubscribe(email.current.value));
+    authFetch('/subscribe', 'POST', {
+      email: email.current.value
+    }).then(() => alert('success'));
   }, [email]);
 
   //TODO quotes carousel
