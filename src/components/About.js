@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/img/logo.png';
 
 export default function About() {
   return (
     <div className="about container">
       <div className="about__desc">
-        <Link className="logo" href="/">
-          <img alt="logo" className='logo__img' src="../assets/img/logo.png" />
+        <Link className="logo" to="/">
+          <img alt="logo" className='logo__img' src={logo} />
           <p>BRAN<span>D</span></p>
         </Link>
         <br />
