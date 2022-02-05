@@ -20,7 +20,8 @@ export const cartReducer = (state = initialState, action) => {
     [CART_CLEAR]: () => initialState
   };
   try {
-    return actions[action.type]();
+    if (actions[action.type]) return actions[action.type]();
+    else return initialState;
   } catch (e) {
     console.log(e);
   }

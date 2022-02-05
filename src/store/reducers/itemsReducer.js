@@ -17,7 +17,8 @@ export const itemsReducer = (state = initialState, action) => {
     }) // TODO
   };
   try {
-    return actions[action.type]();
+    if (actions[action.type]) return actions[action.type]();
+    else return initialState;
   } catch (e) {
     console.log(e);
   }
