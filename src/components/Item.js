@@ -22,7 +22,7 @@ function Item({ item, clickHandler }) {
             src={item.rating} />
         </p>
       </div>
-      <a onClick={() => addHandler()} className='products__add' href='#'>Add to
+      <a onClick={event => addHandler(event)} className='products__add' href='#'>Add to
         cart</a>
     </div>
   );
