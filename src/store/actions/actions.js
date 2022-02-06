@@ -7,34 +7,6 @@ export function login(payload) {
   };
 }
 
-export function cartAdd(payload) {
-  return async dispatch => {
-    dispatch(payload);
-    //TODO: cart add items logic
-  };
-}
-
-export function cartDelete(payload) {
-  return async dispatch => {
-    dispatch(payload);
-    //TODO: cart delete items logic
-  };
-}
-
-export function cartUpdate(payload) {
-  return async dispatch => {
-    dispatch(payload);
-    //TODO: cart update items logic
-  };
-}
-
-export function cartClear(payload) {
-  return async dispatch => {
-    dispatch(payload);
-    //TODO: cart clear logic
-  };
-}
-
 export function logout() {
   return {
     type: LOGOUT,
