@@ -1,16 +1,9 @@
-import { FILTER_ITEMS, LOGOUT } from './types';
+import {  LOGOUT } from './types';
 
 export function login(payload) {
   return async dispatch => {
     dispatch(payload);
     // TODO: login logic
-  };
-}
-
-export function fetchItems(payload) {
-  return async dispatch => {
-    dispatch(payload);
-    //TODO: fetch items logic
   };
 }
 
@@ -42,23 +35,9 @@ export function cartClear(payload) {
   };
 }
 
-export function emailSubscribe(payload) {
-  return async dispatch => {
-    dispatch(payload);
-    //TODO fetch subscribe
-  };
-}
-
 export function logout() {
   return {
     type: LOGOUT,
-  };
-}
-
-export function filterItems(payload) {
-  return {
-    type: FILTER_ITEMS,
-    payload,
   };
 }
 
