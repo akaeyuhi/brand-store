@@ -2,7 +2,7 @@ import { LOGIN_ERROR, LOGIN_SUCCESS, LOGOUT } from '../actions/types';
 
 const initialState = {
   token: '',
-  user: {}
+  user: {},
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -12,14 +12,14 @@ export const authReducer = (state = initialState, action) => {
       localStorage.setItem('user', JSON.stringify(action.payload.user));
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     },
     [LOGIN_ERROR | LOGOUT]: () => {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       return initialState;
-    }
+    },
   };
   try {
     if (actions[action.type]) return actions[action.type]();

@@ -31,7 +31,7 @@ export default function HeaderCart() {
       <div className='cart__drop_total'>
         <h3>TOTAL {sumPrice}</h3>
         <Link to='/checkout'
-          className='cart__drop_total__checkout'>Checkout</Link>
+              className='cart__drop_total__checkout'>Checkout</Link>
         <Link to='/shopping_cart' className='cart__drop_total__goto'>Go
           to cart</Link>
       </div>

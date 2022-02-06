@@ -9,8 +9,8 @@ export default function FeaturedItems() {
   const dispatch = useDispatch();
 
   const clickHandler = useCallback(item =>
-    dispatch(cartAdd(item)),
-  [items]);
+      dispatch(cartAdd(item)),
+    [items]);
 
   return (
     <section className='products container'>
@@ -20,7 +20,7 @@ export default function FeaturedItems() {
       </div>
       <div className='products__content'>
         {items.map(item => <Item key={item.id} item={item}
-          clickHandler={clickHandler} />)}
+                                 clickHandler={clickHandler} />)}
         <Link className='products__button' to='/products'>Browse All
           Product→</Link>
       </div>

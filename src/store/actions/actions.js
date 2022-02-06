@@ -51,14 +51,14 @@ export function emailSubscribe(payload) {
 
 export function logout() {
   return {
-    type: LOGOUT
+    type: LOGOUT,
   };
 }
 
 export function filterItems(payload) {
   return {
     type: FILTER_ITEMS,
-    payload
+    payload,
   };
 }
 

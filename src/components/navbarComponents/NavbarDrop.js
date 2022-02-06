@@ -21,7 +21,7 @@ export default function NavbarDrop() {
       <ul className='drop__menu'>
         {links.map((name, idx) =>
           <li key={idx}><Link className='drop__link link'
-            to='/products'>{name}</Link></li>)
+                              to='/products'>{name}</Link></li>)
         }
       </ul>
     </div>

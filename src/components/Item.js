@@ -16,13 +16,14 @@ function Item({ item, clickHandler }) {
       </Link>
       <div className='products__text'>
         <Link to={`/products/${item.id}`}
-          className='products__link link'>{item.name}</Link>
+              className='products__link link'>{item.name}</Link>
         <p>{item.price}$
           <img alt='star' className='products__star'
-            src={item.rating} />
+               src={item.rating} />
         </p>
       </div>
-      <a onClick={event => addHandler(event)} className='products__add' href='#'>Add to
+      <a onClick={event => addHandler(event)} className='products__add'
+         href='#'>Add to
         cart</a>
     </div>
   );

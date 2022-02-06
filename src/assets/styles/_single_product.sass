@@ -4,6 +4,7 @@
 .arrivals
   height: 148px
   background-color: #f8f3f4
+
   &__container
     @extend .container
     display: flex
@@ -81,10 +82,12 @@
       font-weight: 900
       color: #4d4d4d
       text-transform: uppercase
+
     &__text
       font-size: $default-font-size
       text-align: center
       color: $color-gray
+
       span
         color: $color-black
 
@@ -153,6 +156,7 @@
       -moz-transition: all 0.25s
       -o-transition: all 0.25s
       transition: all 0.25s
+
       &:focus
         border-color: $color-darker-pink
         +scale(1.05)
@@ -173,13 +177,14 @@
     width: 42px
     background-color: #b9b9b9
     height: 3px
+
     &_active
       height: 5px
       background-color: $color-pink
+
     &:hover
       height: 5px
       background-color: $color-pink
-
 
 
 .suggestions

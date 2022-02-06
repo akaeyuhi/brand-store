@@ -10,8 +10,8 @@ export const useHttp = token => {
         body: JSON.stringify(data),
         headers: {
           'Content-Type': 'application/json',
-          authorization: auth
-        }
+          authorization: auth,
+        },
       })).json();
     } catch (e) {
       console.log(e);
@@ -19,6 +19,6 @@ export const useHttp = token => {
   }
 
   return {
-    setAuth, authFetch
+    setAuth, authFetch,
   };
 };

@@ -31,7 +31,7 @@ export default function BrowseDrop() {
         <ul className='drop__menu'>
           {womenLinks.map((link, idx) => <li key={idx}>
             <Link className='drop__link link' to='/products'
-              tag='a'>{link}</Link>
+                  tag='a'>{link}</Link>
           </li>)}
         </ul>
       </div>
@@ -40,7 +40,7 @@ export default function BrowseDrop() {
         <ul className='drop__menu'>
           {menLinks.map((link, idx) => <li key={idx}>
             <Link className='drop__link link' to='/products'
-              tag='a'>{link}</Link>
+                  tag='a'>{link}</Link>
           </li>)}
         </ul>
       </div>

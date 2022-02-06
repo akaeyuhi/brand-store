@@ -10,7 +10,7 @@ export default function Search() {
         className='fas fa-caret-down' /></a>
       <BrowseDrop />
       <input className='form__input' placeholder='Search for item...'
-        type='text' />
+             type='text' />
       <button className='form__search'><i className='fas fa-search' />
       </button>
     </form>

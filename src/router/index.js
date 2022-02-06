@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes  } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import HomePage from '../views/HomePage';
 /* eslint-disable react/jsx-no-undef */
 
@@ -7,7 +7,7 @@ export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
     return (
       <Routes>
-        <Route path="/cart" exact>
+        <Route path='/cart' exact>
           <CartPage />
         </Route>
       </Routes>
@@ -16,25 +16,25 @@ export const useRoutes = isAuthenticated => {
 
   return (
     <Routes>
-      <Route path="/" exact>
+      <Route path='/' exact>
         <HomePage />
       </Route>
-      <Route path="/products" exact>
+      <Route path='/products' exact>
         <ProductsPage />
       </Route>
-      <Route path="/products/:id" exact>
+      <Route path='/products/:id' exact>
         <ProductPage />
       </Route>
-      <Route path="/products/:id" exact>
+      <Route path='/products/:id' exact>
         <CheckoutPage />
       </Route>
-      <Route path="/login" exact>
+      <Route path='/login' exact>
         <LoginPage />
       </Route>
-      <Route path="/register" exact>
+      <Route path='/register' exact>
         <RegisterPage />
       </Route>
-      <Redirect to="/" />
+      <Redirect to='/' />
     </Routes>
   );
 };

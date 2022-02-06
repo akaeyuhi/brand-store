@@ -9,7 +9,7 @@ export default function FeaturesBanner() {
     <section className='container features__offer'>
       <div className='features__pic'>
         <img alt='woman_offer' className='features__img'
-          src='../assets/img/women_offer.jpg' />
+             src='../assets/img/women_offer.jpg' />
         <div className='features__text'>
           <Link to='/products'>
             <h3 className='features__small'>30% <span>OFFER</span></h3>
@@ -20,7 +20,7 @@ export default function FeaturesBanner() {
       <div className='features__points'>
         <div className='features__point'>
           <img alt='features__logo' className='features__logo'
-            src='../assets/img/car.png' />
+               src='../assets/img/car.png' />
           <div className='features__desc'>
             <h3 className='features__header'>Free Delivery</h3>
             <p>
@@ -31,7 +31,7 @@ export default function FeaturesBanner() {
         </div>
         <div className='features__point'>
           <img alt='features__logo' className='features__logo'
-            src='../assets/img/discount.png' />
+               src='../assets/img/discount.png' />
           <div className='features__desc'>
             <h3 className='features__header'>Sales & discounts</h3>
             <p>
@@ -42,7 +42,7 @@ export default function FeaturesBanner() {
         </div>
         <div className='features__point'>
           <img alt='features__logo' className='features__logo'
-            src='../assets/img/crown.png' />
+               src='../assets/img/crown.png' />
           <div className='features__desc'>
             <h3 className='features__header'>Quality assurance</h3>
             <p>

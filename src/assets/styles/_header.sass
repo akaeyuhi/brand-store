@@ -71,7 +71,6 @@
     text-indent: 15px
 
 
-
   &__search
     width: 36px
     height: 39px
@@ -145,6 +144,7 @@
       display: flex
       align-items: center
       flex-wrap: nowrap
+
       &_text
         margin-left: 15px
 
@@ -169,6 +169,7 @@
         -webkit-transition: background 0.25s, color 0.25s
         -moz-transition: background 0.25s, color 0.25s
         -o-transition: background 0.25s, color 0.25s
+
         &:hover
           background-color: $color-pink
           color: $color-white
@@ -177,6 +178,7 @@
         @extend .cart__drop_total__checkout
         color: #4a4a4a
         border: solid 1px #4a4a4a
+
         &:hover
           background-color: #4a4a4a
 
@@ -250,9 +252,9 @@
     flex-direction: column
     position: absolute
     top: 45px
+
     &:before
       +triangle(62px)
-
 
 
 .menu
@@ -263,6 +265,7 @@
 
   &__list
     position: relative
+
     &:hover
       .drop
         display: flex

@@ -11,9 +11,9 @@ function HeaderCartItem({ item }) {
         <img src={item.img} alt={item.name} />
         <div className='cart__drop__description_text'>
           <h4><Link to={`/products/${item.id}`}
-            className='cart__link link'>{item.name}</Link></h4>
+                    className='cart__link link'>{item.name}</Link></h4>
           <img src={item.rating} alt='item rating'
-            className='cart__star' />
+               className='cart__star' />
           <p className='cart__text'>1 x $250</p>
         </div>
       </div>
