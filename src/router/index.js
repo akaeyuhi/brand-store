@@ -1,7 +1,12 @@
 import React from 'react';
-import { Route, Routes  } from 'react-router-dom';
+import { Redirect, Route, Routes } from 'react-router-dom';
 import HomePage from '../views/HomePage';
-/* eslint-disable react/jsx-no-undef */
+import ProductsPage from '../views/ProductsPage';
+import ProductPage from '../views/ProductPage';
+import CheckoutPage from '../views/CheckoutPage';
+import LoginPage from '../views/LoginPage';
+import RegisterPage from '../views/RegisterPage';
+import CartPage from '../views/CartPage';
 
 export const useRoutes = isAuthenticated => {
   if (isAuthenticated) {
