@@ -8,7 +8,7 @@ export class AuthController {
 
     @Get()
     getLogin(){
-
+        return 'LOGIN PAGE';
     }
 
     @Post()

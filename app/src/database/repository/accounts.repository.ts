@@ -12,7 +12,15 @@ export class AccountsRepo{
         return await this.accountsModel.find(accountData);
     }
 
+    async exists(email: string){
+        return await this.accountsModel.exists({email});
+    }
+
     async create(accountData: AccountInterface){
         return await this.accountsModel.create(accountData);
+    }
+
+    async delete(id: string){
+        return await this.accountsModel.deleteOne({_id: id});
     }
 }
