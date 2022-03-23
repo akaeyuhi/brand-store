@@ -9,8 +9,8 @@ export class JwtInterceptor implements NestInterceptor{
     intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> | Promise<Observable<any>> {
         const req = context.switchToHttp().getRequest();
 
-        const objId = this.jwtService.decode(req.headers.usertoken.toString());
-        req.body.user = {id: objId['id']};
+        const tokenData = this.jwtService.decode(req.headers.usertoken.toString());
+        req.body.user = {id: tokenData['id']};
 
         return next.handle();
     }

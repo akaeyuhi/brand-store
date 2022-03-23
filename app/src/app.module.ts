@@ -6,6 +6,8 @@ import { AccountsModule } from './accounts/accounts.module';
 import { AppController } from './app.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { JwtModule } from '@nestjs/jwt';
+import { RefTokensRepo } from './database/repository/refTokens.repository';
+import { RefToken, RefTokenSchema } from './database/models/refToken.schema';
 
 @Module({
   imports: [
@@ -14,9 +16,10 @@ import { JwtModule } from '@nestjs/jwt';
     }),
     AuthModule, 
     AccountsModule, 
-    MongooseModule.forRoot('mongodb://localhost/store')
+    MongooseModule.forRoot('mongodb://localhost/store'),
+    MongooseModule.forFeature([{name: RefToken.name, schema: RefTokenSchema}])
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, RefTokensRepo],
 })
 export class AppModule {}
