@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 @Schema()
 export class RefToken{
     @Prop()
-    token: string;
+    refToken: string;
 }
 
 export type RefTokenDoc = RefToken & Document;

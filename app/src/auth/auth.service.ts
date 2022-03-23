@@ -18,9 +18,8 @@ export class AuthService {
         
         const token = this.jwtService.sign({id: res[0]._id}, {expiresIn: '1h'});
         const refToken = this.jwtService.sign({id: res[0]._id});
-    
-        const r = await this.refTokensRepo.create(refToken);
-        console.log(r);
+        await this.refTokensRepo.create(refToken);
+
         return { token, refToken };
     }
 }
