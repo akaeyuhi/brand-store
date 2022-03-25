@@ -12,11 +12,11 @@ export class AuthService {
     ){}
 
     async postLogin(email: string, password: string){
-        const res = await this.accountsRepo.find({email, password});
-        if(!res.length) return 'INCORRECT USER DATA';
+        const res = await this.accountsRepo.get({email, password});
+        if(!res) return 'INCORRECT USER DATA';
         
-        const token = this.jwtService.sign({id: res[0]._id.toString()}, {expiresIn: '1h'});
-        const refToken = this.jwtService.sign({id: res[0]._id.toString()});
+        const token = this.jwtService.sign({id: res._id.toString()}, {expiresIn: '1h'});
+        const refToken = this.jwtService.sign({id: res._id.toString()});
         await this.refTokensRepo.create(refToken);
 
         return { token, refToken };

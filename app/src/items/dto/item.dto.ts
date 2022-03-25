@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, Max, Min } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from "class-validator";
 
 export class ItemDto{
     @IsString()
@@ -16,4 +16,9 @@ export class ItemDto{
     @Max(5)
     @Min(1)
     rating: number;
+
+    @IsString()
+    @IsNotEmpty()
+    @IsOptional()
+    photo?: string;
 }

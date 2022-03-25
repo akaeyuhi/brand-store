@@ -11,7 +11,7 @@ export class RefTokensRepo{
         return await this.refTokensModel.create({refToken});
     }
 
-    async find(refToken: string){
-        return await this.refTokensModel.find({refToken});
+    async get(refToken: string){
+        return await this.refTokensModel.findOne({refToken});
     }
 }

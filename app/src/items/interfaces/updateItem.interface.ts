@@ -3,4 +3,5 @@ export interface UpdateItemInterface{
     description?: string;
     rating?: number;
     price?: number;
+    photo?: string;
 }

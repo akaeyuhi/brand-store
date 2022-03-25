@@ -12,10 +12,16 @@ export class UpdateItemDto{
     description?: string;
 
     @IsNumber()
+    @IsOptional()
     price?: number;
 
     @IsNumber()
     @Max(5)
     @Min(1)
+    @IsOptional()
     rating?: number;
+
+    @IsString()
+    @IsOptional()
+    photo?: string;
 }

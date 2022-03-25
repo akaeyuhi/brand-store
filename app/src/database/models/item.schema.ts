@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 
 @Schema()
 export class Item{
@@ -21,6 +21,13 @@ export class Item{
         max: 5
     })
     rating: number;
+
+    @Prop({
+        type: MongooseSchema.Types.ObjectId,
+        ref: 'Photo',
+        required: true
+    })
+    photo: string;
 }
 
 export type ItemDoc = Item & Document;

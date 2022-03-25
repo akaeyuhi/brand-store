@@ -5,7 +5,7 @@ import { Types } from 'mongoose';
 export class IdValidationPipe implements PipeTransform{
     transform(value: any, metadata: ArgumentMetadata) {
         const isValid = Types.ObjectId.isValid(value) || 
-            metadata.type === 'body';
+            metadata.type !== 'param';
 
         if(!isValid) throw new BadRequestException('Invalid ID');
 

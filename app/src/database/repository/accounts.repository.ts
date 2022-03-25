@@ -8,8 +8,8 @@ import { AccountInterface } from "src/accounts/interfaces/account.interface";
 export class AccountsRepo{
     constructor(@InjectModel(Account.name) private readonly accountsModel: Model<AccountDoc>){}
 
-    async find(accountData: AccountInterface){
-        return await this.accountsModel.find(accountData);
+    async get(accountData: AccountInterface){
+        return await this.accountsModel.findOne(accountData);
     }
 
     async exists(email: string){

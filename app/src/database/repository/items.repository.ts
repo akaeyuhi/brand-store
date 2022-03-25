@@ -21,7 +21,7 @@ export class ItemsRepo{
     }
 
     async getById(id: string){
-        return this.itemsModel.find({_id: id});
+        return await this.itemsModel.findOne({_id: id});
     }
 
     async update(id: string, updateData: UpdateItemInterface){

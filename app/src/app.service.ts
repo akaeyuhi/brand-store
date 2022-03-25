@@ -10,8 +10,8 @@ export class AppService {
   ){}
 
   async refreshToken(oldToken: string, refToken: string) {
-    const res = await this.refTokenRepo.find(refToken);
-    if(!res.length) throw new BadRequestException('INCORRECT REFRESH TOKEN');
+    const res = await this.refTokenRepo.get(refToken);
+    if(!res) throw new BadRequestException('INCORRECT REFRESH TOKEN');
 
     const tokenData = this.jwtService.decode(oldToken);
     const token = this.jwtService.sign({id: tokenData['id']}, {expiresIn: '1h'});
