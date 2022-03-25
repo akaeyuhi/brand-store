@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Param, Post, Req, Res, UseGuards, UseInterceptors } from '@nestjs/common';
-import { Request, Response } from 'express';
+import { Body, Controller, Delete, Param, Post, Req, Res, UseGuards, UseInterceptors, UsePipes } from '@nestjs/common';
+import { Response } from 'express';
 import { JwtGuard } from 'src/appGuards/jwt.guard';
 import { JwtInterceptor } from 'src/appInterceptors/jwt.interceptor';
+import { IdValidationPipe } from 'src/appPipes/id-validation.pipe';
 import { AccountsService } from './accounts.service';
 import { AccountDto } from './dto';
 
@@ -15,10 +16,11 @@ export class AccountsController {
         return res.redirect('/auth');
     }
 
-    @Delete()
+    @Delete(':id')
     @UseGuards(JwtGuard)
     @UseInterceptors(JwtInterceptor)
-    async deleteAccount(@Req() req: Request){
-        return await this.accountsService.deleteAccount(req.body.user.id);
+    @UsePipes(new IdValidationPipe())
+    async deleteAccount(@Param('id') id: string){
+        return await this.accountsService.deleteAccount(id);
     }
 }
