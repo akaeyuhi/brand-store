@@ -12,6 +12,10 @@ export class AccountsRepo{
         return await this.accountsModel.findOne(accountData);
     }
 
+    async getById(id: string){
+        return await this.accountsModel.findById(id);
+    }
+
     async exists(email: string){
         return await this.accountsModel.exists({email});
     }

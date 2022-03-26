@@ -2,24 +2,24 @@ require('dotenv').config();
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
+import { Account, AccountSchema } from 'src/database/models/account.schema';
 import { Cart, CartSchema } from 'src/database/models/cart.schema';
 import { AccountsRepo } from 'src/database/repository/accounts.repository';
 import { CartsRepo } from 'src/database/repository/carts.repository';
-import { Account, AccountSchema } from '../database/models/account.schema';
-import { AccountsController } from './accounts.controller';
-import { AccountsService } from './accounts.service';
+import { CartsController } from './carts.controller';
+import { CartsService } from './carts.service';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
-      {name: Account.name, schema: AccountSchema},
-      {name: Cart.name, schema: CartSchema}
+      {name: Cart.name, schema: CartSchema},
+      {name: Account.name, schema: AccountSchema}
     ]),
     JwtModule.register({
       secret: process.env.TOKEN_SECRET
     })
   ],
-  providers: [AccountsService, AccountsRepo, CartsRepo],
-  controllers: [AccountsController]
+  controllers: [CartsController],
+  providers: [CartsService, CartsRepo, AccountsRepo]
 })
-export class AccountsModule {}
+export class CartsModule {}

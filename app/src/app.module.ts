@@ -9,6 +9,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { RefTokensRepo } from './database/repository/refTokens.repository';
 import { RefToken, RefTokenSchema } from './database/models/refToken.schema';
 import { ItemsModule } from './items/items.module';
+import { CartsModule } from './carts/carts.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { ItemsModule } from './items/items.module';
     AccountsModule, 
     MongooseModule.forRoot('mongodb://localhost/store'),
     MongooseModule.forFeature([{name: RefToken.name, schema: RefTokenSchema}]),
-    ItemsModule
+    ItemsModule,
+    CartsModule
   ],
   controllers: [AppController],
   providers: [AppService, RefTokensRepo],
