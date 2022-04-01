@@ -24,4 +24,8 @@ export class UpdateItemDto{
     @IsString()
     @IsOptional()
     photo?: string;
+
+    @IsNumber()
+    @IsOptional()
+    discountPrice?: number;
 }

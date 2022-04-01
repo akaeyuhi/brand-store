@@ -12,6 +12,7 @@ export class ItemsService {
     ){}
 
     async creatItem(itemData: ItemInterface){
+        if(!itemData.discountPrice) itemData.discountPrice = null;
         return await this.itemsRepo.create(itemData);
     }
 
@@ -48,6 +49,10 @@ export class ItemsService {
         const { fileName } = await this.photosRepo.get(photo);
         
         return './src/database/photos/' + fileName;
+    }
+
+    async getDiscountItems(){
+        return await this.itemsRepo.getWithDiscount();
     }
 
     private async deletePhotoFile(itemId: string){

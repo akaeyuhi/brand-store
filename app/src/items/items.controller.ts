@@ -27,6 +27,11 @@ export class ItemsController {
         return await this.itemsService.creatItem(body as ItemInterface);
     }
 
+    @Get('discounts')
+    async getDiscountItems(){
+        return await this.itemsService.getDiscountItems();
+    }
+
     @Delete(':id')
     @UsePipes(new IdValidationPipe())
     async deleteItem(@Param('id') id: string) {

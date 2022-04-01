@@ -21,4 +21,8 @@ export class ItemDto{
     @IsNotEmpty()
     @IsOptional()
     photo?: string;
+
+    @IsNumber()
+    @IsOptional()
+    discountPrice?: number;
 }

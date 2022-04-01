@@ -4,4 +4,5 @@ export interface UpdateItemInterface{
     rating?: number;
     price?: number;
     photo?: string;
+    discountPrice?: number;
 }

@@ -4,4 +4,5 @@ export interface ItemInterface{
     price: number;
     rating: number;
     photo: string;
+    discountPrice?: number;
 }

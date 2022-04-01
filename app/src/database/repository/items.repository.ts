@@ -20,7 +20,7 @@ export class ItemsRepo{
     }
 
     async getAll(){
-        return await this.itemsModel.find({}, {name: 1, price: 1});
+        return await this.itemsModel.find({}, {name: 1, price: 1, discountPrice: 1});
     }
 
     async getById(id: string){
@@ -29,5 +29,9 @@ export class ItemsRepo{
 
     async update(id: string, updateData: UpdateItemInterface){
         return await this.itemsModel.updateOne({_id: id}, updateData);
+    }
+
+    async getWithDiscount(){
+        return await this.itemsModel.find({discountPrice: {$ne: null}});
     }
 }

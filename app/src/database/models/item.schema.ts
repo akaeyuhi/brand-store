@@ -28,6 +28,9 @@ export class Item{
         required: true
     })
     photo: string;
+
+    @Prop({required: false})
+    discountPrice: number
 }
 
 export type ItemDoc = Item & Document;
