@@ -10,6 +10,7 @@ import { RefTokensRepo } from './database/repository/refTokens.repository';
 import { RefToken, RefTokenSchema } from './database/models/refToken.schema';
 import { ItemsModule } from './items/items.module';
 import { CartsModule } from './carts/carts.module';
+import { FavouritesModule } from './favourites/favourites.module';
 
 @Module({
   imports: [
@@ -21,7 +22,8 @@ import { CartsModule } from './carts/carts.module';
     MongooseModule.forRoot('mongodb://localhost/store'),
     MongooseModule.forFeature([{name: RefToken.name, schema: RefTokenSchema}]),
     ItemsModule,
-    CartsModule
+    CartsModule,
+    FavouritesModule
   ],
   controllers: [AppController],
   providers: [AppService, RefTokensRepo],

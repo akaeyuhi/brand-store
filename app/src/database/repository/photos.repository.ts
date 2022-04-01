@@ -5,7 +5,10 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class PhotosRepo{
-    constructor(@InjectModel(Photo.name) private readonly photosModel: Model<PhotoDoc>){}
+    constructor(
+        @InjectModel(Photo.name)
+        private readonly photosModel: Model<PhotoDoc>
+    ){}
 
     async create(fileName: string){
         return await this.photosModel.create({fileName});

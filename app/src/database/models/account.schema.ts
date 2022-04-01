@@ -15,6 +15,13 @@ export class Account{
         ref: 'Cart'
     })
     cart: string;
+
+    @Prop({
+        required: true,
+        type: MongooseSchema.Types.ObjectId,
+        ref: 'Favourites'
+    })
+    favourites: string;
 }
 
 export type AccountDoc = Account & Document;

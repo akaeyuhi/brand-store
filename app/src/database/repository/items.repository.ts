@@ -6,7 +6,10 @@ import { ItemInterface, UpdateItemInterface } from "src/items/interfaces";
 
 @Injectable()
 export class ItemsRepo{
-    constructor(@InjectModel(Item.name) private readonly itemsModel: Model<ItemDoc>){}
+    constructor(
+        @InjectModel(Item.name)
+        private readonly itemsModel: Model<ItemDoc>
+    ){}
 
     async create(itemData: ItemInterface){
         return await this.itemsModel.create(itemData);

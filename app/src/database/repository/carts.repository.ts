@@ -6,7 +6,10 @@ import { CartItemInterface } from "src/carts/interfaces";
 
 @Injectable()
 export class CartsRepo{
-    constructor(@InjectModel(Cart.name) private readonly cartsModel: Model<CartDoc>){}
+    constructor(
+        @InjectModel(Cart.name)
+        private readonly cartsModel: Model<CartDoc>
+    ){}
 
     async create(){
         return await this.cartsModel.create({items: []});

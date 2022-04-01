@@ -6,7 +6,10 @@ import { AccountInterface } from "src/accounts/interfaces/account.interface";
 
 @Injectable()
 export class AccountsRepo{
-    constructor(@InjectModel(Account.name) private readonly accountsModel: Model<AccountDoc>){}
+    constructor(
+        @InjectModel(Account.name)
+        private readonly accountsModel: Model<AccountDoc>
+    ){}
 
     async get(accountData: AccountInterface){
         return await this.accountsModel.findOne(accountData);
