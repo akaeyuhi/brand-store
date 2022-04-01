@@ -5,10 +5,16 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 export class Cart{
     @Prop({
         required: false,
-        type: Array<MongooseSchema.Types.ObjectId>(),
+        type: Array<{
+            count: number,
+            itemId: MongooseSchema.Types.ObjectId
+        }>(),
         ref: 'Item'
     })
-    items: string[];
+    items: {
+        count: number,
+        itemId: MongooseSchema.Types.ObjectId
+    }[];
 }
 
 export type CartDoc = Cart & Document;
