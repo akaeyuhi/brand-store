@@ -12,6 +12,8 @@ export class BodyParseInterceptor implements NestInterceptor{
             req.body[prop] = needed.includes(prop) ? Number(body[prop]) : body[prop];
         }
 
+        if(body.categories) req.body.categories = body.categories.split(',');
+
         return next.handle();
     }
 }

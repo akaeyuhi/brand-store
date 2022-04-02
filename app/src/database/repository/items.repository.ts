@@ -19,19 +19,36 @@ export class ItemsRepo{
         return await this.itemsModel.deleteOne({_id: id});
     }
 
-    async getAll(){
-        return await this.itemsModel.find({}, {name: 1, price: 1, discountPrice: 1});
+    async getAll(filter: {
+        sex: 'male' | 'female', 
+        categories: {$in: string[]}, 
+        discountPrice: {$ne: null}}
+    ){
+        return await this.itemsModel.find(
+            filter, 
+            {name: 1, price: 1, discountPrice: 1, sex: 1, categories: 1}
+        );
+    }
+
+    async getByCategory(categories: string[]){
+        return await this.itemsModel.find(
+            {categories: {$in: categories}},
+            {name: 1, price: 1, discountPrice: 1, sex: 1, categories: 1}
+        );
     }
 
     async getById(id: string){
         return await this.itemsModel.findById(id);
     }
 
-    async update(id: string, updateData: UpdateItemInterface){
-        return await this.itemsModel.updateOne({_id: id}, updateData);
+    async getWithDiscount(){
+        return await this.itemsModel.find(
+            {discountPrice: {$ne: null}},
+            {name: 1, price: 1, discountPrice: 1, sex: 1, categories: 1}
+        );
     }
 
-    async getWithDiscount(){
-        return await this.itemsModel.find({discountPrice: {$ne: null}});
+    async update(id: string, updateData: UpdateItemInterface){
+        return await this.itemsModel.updateOne({_id: id}, updateData);
     }
 }

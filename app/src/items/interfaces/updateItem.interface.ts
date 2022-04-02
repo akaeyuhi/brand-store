@@ -4,5 +4,7 @@ export interface UpdateItemInterface{
     rating?: number;
     price?: number;
     photo?: string;
+    sex?: 'male' | 'female';
     discountPrice?: number;
+    categories?: string[];
 }

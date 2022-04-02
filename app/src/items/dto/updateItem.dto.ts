@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from "class-validator";
+import { IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from "class-validator";
 
 export class UpdateItemDto{
     @IsString()
@@ -25,7 +25,16 @@ export class UpdateItemDto{
     @IsOptional()
     photo?: string;
 
+    @IsString()
+    @IsOptional()
+    @IsIn(['male', 'female'])
+    sex?: 'male' | 'female';
+
     @IsNumber()
     @IsOptional()
     discountPrice?: number;
+
+    @IsString({each: true})
+    @IsOptional()
+    categories?: string[];
 }

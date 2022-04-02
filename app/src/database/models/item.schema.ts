@@ -29,8 +29,14 @@ export class Item{
     })
     photo: string;
 
+    @Prop({required: true})
+    sex: string;
+
     @Prop({required: false})
-    discountPrice: number
+    discountPrice: number;
+
+    @Prop({required: false})
+    categories: string[];
 }
 
 export type ItemDoc = Item & Document;

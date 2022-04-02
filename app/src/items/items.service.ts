@@ -23,12 +23,25 @@ export class ItemsService {
         return await this.itemsRepo.delete(id);
     }
 
-    async getAllItems(){
-        return await this.itemsRepo.getAll();
+    async getAllItems(sex: 'male' | 'female', categories: string[], discount: boolean){
+        const filter = {sex, categories: {$in: categories}, discountPrice: {$ne: null}};
+
+        if(!sex) delete filter.sex;
+        if(!categories) delete filter.categories;
+        if(!discount) delete filter.discountPrice;
+
+        return await this.itemsRepo.getAll(filter);
     }
 
     async getItemById(id: string){
         return await this.itemsRepo.getById(id);
+    }
+
+    async getPhoto(itemId: string){
+        const { photo } = await this.getItemById(itemId);
+        const { fileName } = await this.photosRepo.get(photo);
+        
+        return './src/database/photos/' + fileName;
     }
 
     async updateItem(id: string, updateData: UpdateItemInterface){
@@ -42,17 +55,6 @@ export class ItemsService {
     async updateItemPhoto(id: string, fileName: string){
         const photoId = await this.deletePhotoFile(id);
         return await this.photosRepo.update(photoId, fileName);
-    }
-
-    async getPhoto(itemId: string){
-        const { photo } = await this.getItemById(itemId);
-        const { fileName } = await this.photosRepo.get(photo);
-        
-        return './src/database/photos/' + fileName;
-    }
-
-    async getDiscountItems(){
-        return await this.itemsRepo.getWithDiscount();
     }
 
     private async deletePhotoFile(itemId: string){
