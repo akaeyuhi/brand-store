@@ -1,8 +1,8 @@
-import { Body, Controller, Delete, Param, Post, Req, Res, UseGuards, UseInterceptors, UsePipes } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Post, Res, UseGuards, UseInterceptors, UsePipes } from '@nestjs/common';
 import { Response } from 'express';
 import { JwtGuard } from 'src/appGuards/jwt.guard';
 import { JwtInterceptor } from 'src/appInterceptors/jwt.interceptor';
-import { IdValidationPipe } from 'src/appPipes/id-validation.pipe';
+import { IdValidationPipe } from 'src/appPipes/idValidation.pipe';
 import { AccountsService } from './accounts.service';
 import { AccountDto } from './dto';
 

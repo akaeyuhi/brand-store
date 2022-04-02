@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Patch, Put, Req, UseGuards, UseIn
 import { Request } from 'express';
 import { JwtGuard } from 'src/appGuards/jwt.guard';
 import { JwtInterceptor } from 'src/appInterceptors/jwt.interceptor';
-import { IdValidationPipe } from 'src/appPipes/id-validation.pipe';
+import { IdValidationPipe } from 'src/appPipes/idValidation.pipe';
 import { CartsService } from './carts.service';
 import { CountDto } from './dto';
 

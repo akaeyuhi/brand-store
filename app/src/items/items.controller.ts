@@ -1,14 +1,15 @@
-import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Put, Query, Req, Res, UploadedFile, UseGuards, UseInterceptors, UsePipes } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query, Res, UploadedFile, UseGuards, UseInterceptors, UsePipes } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { JwtGuard } from 'src/appGuards/jwt.guard';
 import { JwtInterceptor } from 'src/appInterceptors/jwt.interceptor';
-import { IdValidationPipe } from 'src/appPipes/id-validation.pipe';
+import { IdValidationPipe } from 'src/appPipes/idValidation.pipe';
 import { CategoriesDto, ItemDto, UpdateItemDto } from './dto';
 import { ItemsService } from './items.service';
 import { Express, Response } from 'express';
 import { ItemInterface } from './interfaces';
 import { BodyParseInterceptor } from 'src/appInterceptors/bodyParse.interceptor';
 import { createReadStream } from 'fs';
+import { QueryValidationPipe } from 'src/appPipes/queryValidation.pipe';
 
 @UseGuards(JwtGuard)
 @UseInterceptors(JwtInterceptor)
@@ -28,12 +29,12 @@ export class ItemsController {
     }
 
     @Get()
+    @UsePipes(new QueryValidationPipe())
     async getAllItems(
         @Body() body: CategoriesDto,
-        @Query('sex') sex: 'male' | 'female',
-        @Query('discount') discount: string
+        @Query() params: {sex: 'male' | 'female', discount: boolean}
     ) {
-        return await this.itemsService.getAllItems(sex, body.categories, !!discount);
+        return await this.itemsService.getAllItems(params.sex, body.categories, params.discount);
     }
 
     @Get(':id')
