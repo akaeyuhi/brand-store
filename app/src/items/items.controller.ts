@@ -7,7 +7,6 @@ import { CategoriesDto, ItemDto, UpdateItemDto } from './dto';
 import { ItemsService } from './items.service';
 import { Express, Response } from 'express';
 import { ItemInterface } from './interfaces';
-import { BodyParseInterceptor } from 'src/appInterceptors/bodyParse.interceptor';
 import { createReadStream } from 'fs';
 import { QueryValidationPipe } from 'src/appPipes/queryValidation.pipe';
 
@@ -18,14 +17,18 @@ export class ItemsController {
     constructor(private readonly itemsService: ItemsService) { }
 
     @Post()
-    @UseInterceptors(FileInterceptor('file'), BodyParseInterceptor)
-    async createItem(@Body() body: ItemDto, @UploadedFile() file: Express.Multer.File) {
-        if (!file) throw new BadRequestException('Missing File');
+    async createItem(@Body() body: ItemDto) {
+        return await this.itemsService.creatItem(body as ItemInterface);
+    }
+
+    @Post(':id/photo')
+    @UseInterceptors(FileInterceptor('file'))
+    @UsePipes(new IdValidationPipe())
+    async postItemPhoto(@Param('id') itemId: string, @UploadedFile() file: Express.Multer.File){
+        if(!file) throw new BadRequestException('Missing file');
 
         const photo = await this.itemsService.uploadPhoto(file.filename);
-        body.photo = photo._id.toString();
-
-        return await this.itemsService.creatItem(body as ItemInterface);
+        return await this.itemsService.updateItem(itemId, {photo: photo._id.toString()});
     }
 
     @Get()
@@ -54,14 +57,17 @@ export class ItemsController {
 
     @Patch(':id')
     @UsePipes(new IdValidationPipe())
-    @UseInterceptors(FileInterceptor('file'), BodyParseInterceptor)
-    async updateItem(
-        @Param('id') id: string,
-        @Body() body: UpdateItemDto,
-        @UploadedFile() file: Express.Multer.File
-    ) {
-        if (file) await this.itemsService.updateItemPhoto(id, file.filename);
+    async updateItem(@Param('id') id: string, @Body() body: UpdateItemDto) {
         return await this.itemsService.updateItem(id, body);
+    }
+
+    @Patch(':id/photo')
+    @UseInterceptors(FileInterceptor('file'))
+    @UsePipes(new IdValidationPipe())
+    async changeItemPhoto(@Param('id') itemId: string, @UploadedFile() file: Express.Multer.File){
+        if(!file) throw new BadRequestException('Missing file');
+
+        return await this.itemsService.updateItemPhoto(itemId, file.filename);
     }
 
     @Delete(':id')

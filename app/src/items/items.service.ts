@@ -16,11 +16,8 @@ export class ItemsService {
         return await this.itemsRepo.create(itemData);
     }
 
-    async deleteItem(id: string){
-        const photoId = await this.deletePhotoFile(id);
-        await this.photosRepo.delete(photoId);
-
-        return await this.itemsRepo.delete(id);
+    async uploadPhoto(fileName: string){
+        return await this.photosRepo.create(fileName);
     }
 
     async getAllItems(sex: 'male' | 'female', categories: string[], discount: boolean){
@@ -48,13 +45,16 @@ export class ItemsService {
         return await this.itemsRepo.update(id, updateData);
     }
 
-    async uploadPhoto(fileName: string){
-        return await this.photosRepo.create(fileName);
-    }
-
     async updateItemPhoto(id: string, fileName: string){
         const photoId = await this.deletePhotoFile(id);
         return await this.photosRepo.update(photoId, fileName);
+    }
+
+    async deleteItem(id: string){
+        const photoId = await this.deletePhotoFile(id);
+        await this.photosRepo.delete(photoId);
+
+        return await this.itemsRepo.delete(id);
     }
 
     private async deletePhotoFile(itemId: string){

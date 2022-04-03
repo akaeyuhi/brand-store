@@ -25,7 +25,7 @@ export class Item{
     @Prop({
         type: MongooseSchema.Types.ObjectId,
         ref: 'Photo',
-        required: true
+        required: false
     })
     photo: string;
 

@@ -30,22 +30,8 @@ export class ItemsRepo{
         );
     }
 
-    async getByCategory(categories: string[]){
-        return await this.itemsModel.find(
-            {categories: {$in: categories}},
-            {name: 1, price: 1, discountPrice: 1, sex: 1, categories: 1}
-        );
-    }
-
     async getById(id: string){
         return await this.itemsModel.findById(id);
-    }
-
-    async getWithDiscount(){
-        return await this.itemsModel.find(
-            {discountPrice: {$ne: null}},
-            {name: 1, price: 1, discountPrice: 1, sex: 1, categories: 1}
-        );
     }
 
     async update(id: string, updateData: UpdateItemInterface){
