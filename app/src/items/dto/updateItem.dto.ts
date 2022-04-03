@@ -1,4 +1,4 @@
-import { IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from "class-validator";
+import { ArrayNotEmpty, IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from "class-validator";
 
 export class UpdateItemDto{
     @IsString()
@@ -35,6 +35,7 @@ export class UpdateItemDto{
     discountPrice?: number;
 
     @IsString({each: true})
+    @ArrayNotEmpty()
     @IsOptional()
     categories?: string[];
 }

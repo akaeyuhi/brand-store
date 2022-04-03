@@ -1,4 +1,4 @@
-import { IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from "class-validator";
+import { ArrayNotEmpty, IsIn, IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min } from "class-validator";
 
 export class ItemDto{
     @IsString()
@@ -22,6 +22,7 @@ export class ItemDto{
     sex: 'male' | 'female';
 
     @IsString({each: true})
+    @ArrayNotEmpty()
     @IsOptional()
     categories: string[];
 

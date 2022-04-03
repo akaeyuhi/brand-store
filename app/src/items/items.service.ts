@@ -4,6 +4,12 @@ import { PhotosRepo } from 'src/database/repository/photos.repository';
 import { ItemInterface, UpdateItemInterface } from './interfaces';
 import { rm } from 'fs/promises';
 
+type Filter = {
+    sex: 'male' | 'female',
+    categories: {$in: string[]},
+    discountPrice: {$ne: null}
+};
+
 @Injectable()
 export class ItemsService {
     constructor(
@@ -13,6 +19,10 @@ export class ItemsService {
 
     async creatItem(itemData: ItemInterface){
         if(!itemData.discountPrice) itemData.discountPrice = null;
+        if(itemData.categories){
+            itemData.categories = itemData.categories.map(cat => cat.toLowerCase());
+        }
+
         return await this.itemsRepo.create(itemData);
     }
 
@@ -21,11 +31,13 @@ export class ItemsService {
     }
 
     async getAllItems(sex: 'male' | 'female', categories: string[], discount: boolean){
-        const filter = {sex, categories: {$in: categories}, discountPrice: {$ne: null}};
+        const filter: Filter = {} as Filter;
 
-        if(!sex) delete filter.sex;
-        if(!categories) delete filter.categories;
-        if(!discount) delete filter.discountPrice;
+        if(sex) filter.sex = sex;
+        if(discount) filter.discountPrice = {$ne: null};
+        if(categories){
+            filter.categories = {$in: categories.map(cat => cat.toLowerCase())};
+        }
 
         return await this.itemsRepo.getAll(filter);
     }
@@ -42,6 +54,10 @@ export class ItemsService {
     }
 
     async updateItem(id: string, updateData: UpdateItemInterface){
+        if(updateData.categories){
+            updateData.categories = updateData.categories.map(cat => cat.toLowerCase());
+        }
+
         return await this.itemsRepo.update(id, updateData);
     }
 
