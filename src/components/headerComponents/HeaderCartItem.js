@@ -14,7 +14,7 @@ function HeaderCartItem({ item }) {
             className='cart__link link'>{item.name}</Link></h4>
           <img src={item.rating} alt='item rating'
             className='cart__star' />
-          <p className='cart__text'>1 x $250</p>
+          <p className='cart__text'>1 x {item.price}</p>
         </div>
       </div>
       <button className='cart__delete'><i
@@ -28,7 +28,8 @@ HeaderCartItem.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
     img: PropTypes.string,
-    rating: PropTypes.string,
+    rating: PropTypes.number,
+    price: PropTypes.number
   }),
 };
 
