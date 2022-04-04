@@ -7,7 +7,7 @@ import About from './components/About';
 import { Footer } from './components/Footer';
 
 function App() {
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   const routes = useRoutes(isAuthenticated);
 
   return (

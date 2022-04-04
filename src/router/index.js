@@ -31,7 +31,7 @@ export const useRoutes = isAuthenticated => (
     <Route path="/login" exact element={<LoginPage />} />
     <Route path="/register" exact element={<RegisterPage />} />
     <Route
-      path="/cart"
+      path="/shopping_cart"
       element={
         <ProtectedRoute isAuth={isAuthenticated}>
           <CartPage />
