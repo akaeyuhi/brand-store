@@ -1,4 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# compiled output
+/dist
+/node_modules
 
 # Logs
 logs
@@ -9,28 +11,11 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
+# OS
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# compiled output
-/dist
 
 # Tests
+/coverage
 /.nyc_output
 
 # IDEs and editors
@@ -48,3 +33,9 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# Constants file
+.env
+
+# Build config
+*.tsbuildinfo
