@@ -18,7 +18,7 @@ function ProtectedRoute({ isAuth, children }) {
 
 ProtectedRoute.propTypes = {
   isAuth: PropTypes.bool,
-  children: PropTypes.func
+  children: PropTypes.element
 };
 
 
