@@ -3,6 +3,7 @@ import {
   CART_DELETE,
   CART_UPDATE,
 } from '../actions/types';
+import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [{
@@ -22,25 +23,23 @@ const initialState = {
     name: 'Test',
     rating: 5,
     price: 100,
-  }, ],
+  },
+  ],
 };
 
-export const cartReducer = (state = initialState, action) => {
-  const actions = {
-    [CART_ADD]: () => ({
-      items: state.items.concat([action.payload])
-    }),
-    [CART_DELETE]: () => ({
-      items: state.items.filter(item => item.id = action.payload.id),
-    }),
-    [CART_UPDATE]: () => '', // TODO
-    [CART_CLEAR]: () => initialState
-  };
-  try {
-    if (actions[action.type]) return actions[action.type]();
-    else return initialState;
-  } catch (e) {
-    console.log(e);
-  }
+export const cartReducer = createReducer(initialState, (builder => {
+  builder
+    .addCase(CART_ADD, (state, action) =>
+      state.items.push(action.payload)
+    )
+    .addCase(CART_DELETE, (state, action) =>
+      state.items.filter(item => item.id = action.payload.id)
+    )
+    .addCase(CART_CLEAR, state => {
+      state.items = initialState.items;
+    })
+    .addCase(CART_UPDATE, (state, action) => {
+      state.items = action.payload.items;
+    });
+}));
 
-};

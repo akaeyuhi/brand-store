@@ -1,4 +1,5 @@
 import { FETCH_ITEMS, FILTER_ITEMS } from '../actions/types';
+import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [{
@@ -6,37 +7,36 @@ const initialState = {
     name: 'Test',
     rating: 5,
     price: 100,
+    categories: []
   },
   {
     id: 2,
     name: 'Test',
     rating: 5,
     price: 100,
+    categories: []
   },
   {
     id: 3,
     name: 'Test',
     rating: 5,
     price: 100,
+    categories: []
   }, ],
-  filters: {},
   filtered: []
 };
 
-export const itemsReducer = (state = initialState, action) => {
-  const actions = {
-    [FETCH_ITEMS]: () => ({
-      ...state, items: [...action.payload]
-    }),
-    [FILTER_ITEMS]: () => ({
-      ...state,
-      filtered: state.items.filter(item => item === state.filter)
-    }) // TODO
-  };
-  try {
-    if (actions[action.type]) return actions[action.type]();
-    else return initialState;
-  } catch (e) {
-    console.log(e);
-  }
-};
+export const itemsReducer = createReducer(initialState, builder => {
+  builder
+    .addCase(FETCH_ITEMS, (state, action) => {
+      state.items = action.payload;
+      state.filtered = action.payload;
+    })
+    .addCase(FILTER_ITEMS, (state, action) => {
+      state.filtered = state.items.filter(item => item.categories.some(action.payload));
+    })
+    .addCase('FETCH_ERROR', state => {
+      state.items = initialState.items;
+    });
+});
+

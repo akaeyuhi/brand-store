@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { cartAdd } from '../store/actions/actions';
 
 export default function FeaturedItems() {
-  const items = useSelector(state => state.items.items);
+  const items = useSelector(state => state.allItems.items);
   const dispatch = useDispatch();
 
   const clickHandler = useCallback(item =>
