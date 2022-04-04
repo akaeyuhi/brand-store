@@ -5,7 +5,24 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  items: [],
+  items: [{
+    id: 1,
+    name: 'Test',
+    rating: 5,
+    price: 100,
+  },
+  {
+    id: 2,
+    name: 'Test',
+    rating: 5,
+    price: 100,
+  },
+  {
+    id: 3,
+    name: 'Test',
+    rating: 5,
+    price: 100,
+  }, ],
 };
 
 export const cartReducer = (state = initialState, action) => {

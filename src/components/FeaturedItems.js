@@ -21,9 +21,9 @@ export default function FeaturedItems() {
       <div className='products__content'>
         {items.map(item => <Item key={item.id} item={item}
           clickHandler={clickHandler} />)}
-        <Link className='products__button' to='/products'>Browse All
-          Product→</Link>
       </div>
+      <Link className='products__button' to='/products'>Browse All
+        Product→</Link>
     </section>
   );
 }
