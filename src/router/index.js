@@ -7,28 +7,42 @@ import CheckoutPage from '../views/CheckoutPage';
 import LoginPage from '../views/LoginPage';
 import RegisterPage from '../views/RegisterPage';
 import CartPage from '../views/CartPage';
+import PropTypes from 'prop-types';
 
-export const useRoutes = isAuthenticated => {
-  if (isAuthenticated) {
-    return (
-      <Routes>
-        <Route path="/cart" exact element={<CartPage />} />
-      </Routes>
-    );
+function ProtectedRoute({ isAuth, children }) {
+  if (!isAuth) {
+    return <Navigate to="/" replace />;
   }
+  return children;
+}
 
-  return (
-    <Routes>
-      <Route path="/" exact element={<HomePage />} />
-      <Route path="/products" exact element={<ProductsPage />}/>
-      <Route path="/products/:id" exact element={<ProductPage />} />
-      <Route path="/checkout" exact element={<CheckoutPage />} />
-      <Route path="/login" exact element={<LoginPage />} />
-      <Route path="/register" exact element={<RegisterPage />} />
-      <Route
-        path="*"
-        element={<Navigate to="/" />}
-      />
-    </Routes>
-  );
+ProtectedRoute.propTypes = {
+  isAuth: PropTypes.bool,
+  children: PropTypes.func
 };
+
+
+export const useRoutes = isAuthenticated => (
+  <Routes>
+    <Route path="/" exact element={<HomePage />} />
+    <Route path="/products" exact element={<ProductsPage />}/>
+    <Route path="/products/:id" exact element={<ProductPage />} />
+    <Route path="/checkout" exact element={<CheckoutPage />} />
+    <Route path="/login" exact element={<LoginPage />} />
+    <Route path="/register" exact element={<RegisterPage />} />
+    <Route
+      path="/cart"
+      element={
+        <ProtectedRoute isAuth={isAuthenticated}>
+          <CartPage />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path="*"
+      element={<Navigate to="/" />}
+    />
+  </Routes>
+);
+
+export default ProtectedRoute;
