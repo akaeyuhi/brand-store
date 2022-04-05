@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import HeaderCartItem from './HeaderCartItem';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { cartDelete } from '../../store/actions/actions';
+import { cartDelete } from '../../store/slices/cartSlice';
 
 export default function HeaderCart() {
   const cartItems = useSelector(state => state.cart.items);
@@ -11,7 +11,7 @@ export default function HeaderCart() {
 
   useEffect(() => setSumPrice(cartItems.reduce((a, b) => a + b.price, 0)),
     [cartItems]);
-  const btnCallback = useCallback(id => dispatch(cartDelete({ id })), []);
+  const btnCallback = useCallback(id => dispatch(cartDelete(id)), []);
 
   return (
     <div className='cart__drop'>

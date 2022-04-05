@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 //TODO: store integration
 
-function HeaderCartItem({ item }) {
+function HeaderCartItem({ item, callback }) {
   return (
     <div className='cart__drop_item'>
       <div className='cart__drop__description'>
@@ -17,8 +17,8 @@ function HeaderCartItem({ item }) {
           <p className='cart__text'>1 x {item.price}</p>
         </div>
       </div>
-      <button className='cart__delete'><i
-        className='fas fa-times-circle' /></button>
+      <button className='cart__delete' onClick={() => callback(item.id)}>
+        <i className='fas fa-times-circle' /></button>
     </div>
   );
 }
@@ -31,6 +31,7 @@ HeaderCartItem.propTypes = {
     rating: PropTypes.number,
     price: PropTypes.number
   }),
+  callback: PropTypes.func
 };
 
 export default HeaderCartItem;
