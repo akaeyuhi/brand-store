@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import shirt from '../assets/img/shirt.png';
 
 function Item({ item, clickHandler }) {
 
@@ -12,7 +13,7 @@ function Item({ item, clickHandler }) {
   return (
     <div className='products__item'>
       <Link className='products__img' to={`/products/${item.id}`}>
-        <img alt='product' src='../assets/img/shirt.png' />
+        <img alt='product' src={shirt} />
       </Link>
       <div className='products__text'>
         <Link to={`/products/${item.id}`}
