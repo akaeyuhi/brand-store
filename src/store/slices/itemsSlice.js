@@ -1,5 +1,4 @@
-import { FETCH_ITEMS, FILTER_ITEMS } from '../actions/types';
-import { createReducer } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [{
@@ -26,17 +25,30 @@ const initialState = {
   filtered: []
 };
 
-export const itemsReducer = createReducer(initialState, builder => {
-  builder
-    .addCase(FETCH_ITEMS, (state, action) => {
+const itemsSlice = createSlice({
+  name: 'items',
+  initialState,
+  reducers: {
+    fetchItemsSuccess(state, action) {
       state.items = action.payload;
       state.filtered = action.payload;
-    })
-    .addCase(FILTER_ITEMS, (state, action) => {
+    },
+    filterItems(state, action) {
       state.filtered = state.items.filter(item => item.categories.some(action.payload));
-    })
-    .addCase('FETCH_ERROR', state => {
+    },
+    fetchItemsError(state) {
       state.items = initialState.items;
-    });
+    }
+  }
 });
+
+const { actions, reducer } = itemsSlice;
+export const {
+  fetchItemsSuccess,
+  filterItems,
+  fetchItemsError
+} = actions;
+
+export default reducer;
+
 
