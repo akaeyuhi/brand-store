@@ -2,8 +2,7 @@ import React, { useCallback } from 'react';
 import Item from './Item';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { cartAdd } from '../store/actions/actions';
-
+import { cartAdd } from '../store/slices/cartSlice';
 export default function FeaturedItems() {
   const items = useSelector(state => state.allItems.items);
   const dispatch = useDispatch();
