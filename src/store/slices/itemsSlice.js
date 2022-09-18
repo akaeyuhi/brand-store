@@ -27,7 +27,7 @@ const initialState = {
 
 const itemsSlice = createSlice({
   name: 'items',
-  initialState,
+  state: initialState,
   reducers: {
     fetchItemsSuccess(state, action) {
       state.items = action.payload;
